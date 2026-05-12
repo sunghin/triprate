@@ -236,39 +236,39 @@ export function ShortcutScreen({
                   onClick={() => openExampleWalkthrough(example.amount)}
                   className="w-full rounded-3xl border border-[var(--border)] bg-[var(--card-strong)] px-4 py-3 text-left"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="min-w-0">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between gap-4">
                       <span className="text-[17px] font-semibold text-[var(--accent-strong)]">
                         {formatCurrencyAmount(
                           example.amount,
                           recommendation.quote.baseCurrency,
                         )}
                       </span>
-                      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-                        Exact{" "}
-                        {formatCurrencyAmount(
-                          example.exact,
-                          recommendation.quote.quoteCurrency,
-                        )}{" "}
-                        · missed by {formatPercent(example.relativeError)}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <span className="text-[17px] font-semibold text-[var(--accent)]">
+                          {formatCurrencyAmount(
+                            example.estimate,
+                            recommendation.quote.quoteCurrency,
+                          )}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className={`flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[18px] text-[var(--accent-strong)] transition-transform ${
+                            isExpanded ? "rotate-180" : ""
+                          }`}
+                        >
+                          ▾
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-[17px] font-semibold text-[var(--accent)]">
-                        {formatCurrencyAmount(
-                          example.estimate,
-                          recommendation.quote.quoteCurrency,
-                        )}
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className={`flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] bg-white text-[18px] text-[var(--accent-strong)] transition-transform ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                      >
-                        ▾
-                      </span>
-                    </div>
+                    <p className="text-sm leading-6 text-[var(--muted)]">
+                      Exact{" "}
+                      {formatCurrencyAmount(
+                        example.exact,
+                        recommendation.quote.quoteCurrency,
+                      )}{" "}
+                      · missed by {formatPercent(example.relativeError)}
+                    </p>
                   </div>
                 </button>
 
